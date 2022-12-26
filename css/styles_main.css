@@ -1,0 +1,95 @@
+#wrapper{
+	width: 500px;
+	margin: 0px auto;
+	padding: 10px;
+	text-align: justify;
+}
+ 
+#wrapper > div{
+	margin-bottom: 15px;
+}
+
+#wrapper p{
+	display: flex;
+	margin-bottom: 5px;
+}
+
+.comment-body{
+	border-bottom: 2px solid #c2ffff;
+	border-width: medium;
+	display: flex;
+	flex-direction: row;
+}
+
+.photo{
+	width: 80px;
+	height: 80px;
+}
+
+.date{
+	width: 50%;
+	position: relative;
+	text-align: right;
+	vertical-align: top;
+	font-weight: bold;
+}
+
+.span1{
+	min-height: 100px;
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+}
+
+.span2{
+	width: 400px;
+	height: 30px;
+	display: flex;
+	flex-direction: row;
+}
+
+.name{
+	width: 50%;
+	padding-left: 10px;
+	text-align: left;
+	vertical-align: top;
+	font-size: 12pt;
+}
+
+.comment{
+	padding-left: 10px;
+	hyphens: auto;
+	word-wrap: break-word;
+}
+
+textarea.form-control{
+	width: 100%;
+	padding: 5px 10px;
+	min-height: 10vh;
+	resize: vertical;
+	text-align: justify;
+	
+}
+
+.button{
+	all: unset;
+	display: flex;
+	width: 50%;
+	border-bottom: 1px solid #3a7999;
+	padding-left: 10px;
+	text-align: left;
+	vertical-align: top;
+	font-size: 12pt;
+	cursor: pointer;
+}
+
+.button:hover{
+	color: blue;
+}
+
+.chat{
+	height: 60vh;
+	width: 105%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}

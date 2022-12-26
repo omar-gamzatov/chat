@@ -28,8 +28,6 @@ session_start();
 					unset($_SESSION['pass_not_confirmed']);
 				}
 			?>
-
-
 		</form>
 	</body>
 </html>

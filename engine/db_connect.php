@@ -1,5 +1,9 @@
 <?php
 
+// $host = 'localhost';
+// $sqli_login = 'omargaan_swth';
+// $sqli_pass = 'Fizikamylove44';
+// $db_name = 'omargaan_swth';	
 $host = 'localhost';
 $sqli_login = 'root';
 $sqli_pass = '';

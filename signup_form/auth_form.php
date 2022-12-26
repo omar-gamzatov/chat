@@ -11,7 +11,7 @@ unset($_SESSION['user']);
 		<link rel="stylesheet" href="../css/auth.css">
 	</head>
 	<body>
-		<form class="auth-form" action="../engine/authorization.php" method="POST">
+		<form class="auth-form" action='../engine/authorization.php' method="POST">
 			<label>Логин</label>
 			<input class="form-control" type="text" name="auth_login" placeholder="Введите логин">
 			<label>Пароль</label>

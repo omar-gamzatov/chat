@@ -1,62 +1,64 @@
 <?php
-session_start();
-require_once("engine\db_connect.php");
-require_once("engine\include_template.php");
-if (!$_SESSION['user']['login'])
+
+if (!isset($_SESSION))
 {
-	header('Location: signup_form/auth_form.php');
+    session_start();
 }
 
-if (getRequestVar('comment')) { // если пришло имя и сообщение
-	$export_date = time();
-	$export_user_name = $_SESSION['user']['login'];
-	$export_comment = esc(getRequestVar('comment'));
-	mysqli_query($connect, "INSERT INTO `posts` (`id`, `date`, `user_name`, `comment`) VALUES (NULL, '$export_date', '$export_user_name', '$export_comment')");
-
-//	unset($export_date, $export_user_name, $export_comment);
+if(!isset($_SESSION['user']['login']))
+{
+    header('Location: ../signup_form/auth_form.php');
 }
+    
+require_once('engine/db_connect.php');
 
 $check_posts = mysqli_query($connect, "SELECT * FROM `posts`");
-
-function getRequestVar($var) {
-	return isset($_POST[$var]) ? trim($_POST[$var]) : null;
-}
 
 function esc($str) {
 	return htmlspecialchars($str, ENT_QUOTES | ENT_IGNORE);
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 	<head>
 		<meta charset="utf-8">  
 		<title>Главная</title>
 		<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
-		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="css/styles_main.css">
 	</head>
 	<body>
 		<div id="wrapper">
-			<h1>Чат</h1>
-			<?= session_id()?>
-				<?php while ($row=mysqli_fetch_assoc($check_posts)): ?>
-					<div class="note">
-						<p>
-							<span class="date"><?= date('d.m.y H:i', $row['date'])?></span>
-							<span class="name"><?= esc($row['user_name'])?></span>
-						</p>
-						<p><?= esc($row['comment'])?></p>
+			<h1>Just chat!</h1>
+			<div class="chat">
+				<?php while ($posts = mysqli_fetch_assoc($check_posts)): ?>
+					<div>
+						<div class="comment-body">
+							<?php 
+								$query_login = $posts['user_name'];
+								$check_user_photo = mysqli_query($connect, "SELECT `photo`, `id` FROM `users` WHERE `login` = '$query_login'");
+								$user = mysqli_fetch_assoc($check_user_photo);
+							?>
+							<img class="photo" src="<?=esc($user['photo'])?>">
+							<span class="span1">
+								<span class="span2">
+									<form class="name" action="/profile.php" method="POST">
+										<button class="button" name="profile_comment" value="<?= esc($user['id'])?>"><?= esc($posts['user_name'])?></button>
+									</form>
+									<span class="date"><?= date('d.m.y H:i', $posts['date'])?></span>
+								</span>
+							<span class="comment"><?= esc($posts['comment'])?></span>
+							</span>
+						</div>
 					</div>
 				<?php endwhile;?>
-
-			<div class="info alert alert-info">
-				Запись успешно сохранена!
 			</div>
 			<div id="form">
-				<form action="" method="POST">
-					<p>Ваш ID:<?php echo $_SESSION['user']['id']?>  Ваш логин: <?php echo $_SESSION['user']['login']?></p>
+				<form action="/redirect.php" method="POST">
+					<p>Ваш ID:<?=esc($_SESSION['user']['id'])?>  Ваш логин: <?=esc($_SESSION['user']['login'])?></p>
 					<p><textarea class="form-control" placeholder="Ваш комментарий" name="comment"></textarea></p>
-					<p><input type="submit" class="btn btn-info btn-block" value="Сохранить" autocomplete="off"></p>
+					<p><input type="submit" class="btn btn-info btn-block" value="Отправить" autocomplete="off"></p>
 				</form>
 			</div>
 			<div>

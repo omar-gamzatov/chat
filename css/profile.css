@@ -1,0 +1,140 @@
+body {
+	display: flex;
+	flex-direction: row;
+}
+
+body > div{
+	width: 500px;
+	margin: 10px auto;
+	padding: 10px;
+	text-align: justify;
+	display: flex;
+	flex-direction: column;
+
+}
+
+body > div > div{
+	width: 500px;
+	display: flex;
+	margin-bottom: 15px;
+}
+
+img {
+	width: 100px;
+}
+
+span{
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 6px;
+}
+
+.div2_1{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #c2ffff;
+}
+
+.profile-div4{
+	border-bottom: 2px solid #c2ffff;
+	border-width: medium;
+	border-radius: 5px;
+	background-color: #c2ffff;
+}
+
+.div4_1{
+	min-height: 100px;
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+}
+
+
+.text-left{
+	width: 100%;
+	text-align: left;
+	vertical-align: top;
+	padding-left: 10px;
+}
+
+.text-right{
+	text-align: right;
+	vertical-align: top;
+}
+
+.profile-div3{
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #c2ffff;
+}
+.photo{
+	width: 150px;
+	height: 150px;
+	margin: 10px;
+}
+
+.comment-photo{
+	width: 70px;
+	height: 70px;
+	margin: 10px;
+}
+
+.comment-user-name{
+	width: 100%;
+	padding-left: 10px;
+	margin-top: 10px;
+	text-align: left;
+	vertical-align: top;
+	font-size: 12pt;
+}
+
+.comment-date{
+	position: relative;
+	text-align: right;
+	vertical-align: top;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-right: 15px;
+}
+
+.comment{
+	display: inline-block;
+	max-width: 420px;
+	padding-left: 10px;
+	hyphens: auto;
+	word-wrap: break-word;
+}
+
+.form-control{
+	width: 500px;
+	padding: 5px 10px;
+	min-height: 50px;
+	resize: vertical;
+	text-align: justify;
+	white-space: normal;
+}
+
+.text-status{
+	width: 100%;
+	padding-left: 10px;
+}
+
+.button{
+	all: unset;
+	display: flex;
+	width: 100%;
+	padding-left: 10px;
+	text-align: left;
+	vertical-align: top;
+	font-size: 12pt;
+	cursor: pointer;
+}
+
+.back-to-chat{
+	display: contents;
+	margin: 15px;
+	padding: 5px;
+}

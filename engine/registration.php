@@ -10,7 +10,9 @@
 	if($pass === $pass_confirm) {
 		
 		$pass = md5($pass);
-		$path = 'uploads/' . time() . $_FILES['photo']['name']; // фото в папку uploads
+		if($_FILES['photo']['name']) {
+			$path = 'uploads/' . time() . $_FILES['photo']['name']; // фото в папку uploads
+		} else $path = 'uploads/def.jpg';
 
 		if(!move_uploaded_file($_FILES['photo']['tmp_name'], '../' . $path)) {
 			$_SESSION['pass_not_confirmed'] = 'Ошибка при загрузке фото';
